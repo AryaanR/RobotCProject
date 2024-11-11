@@ -17,25 +17,84 @@ void cast()
 
 }
 
-void waitForFish()
+bool waitForFish(float Time_MS)
 {
 
 }
 
-void reelFish()
+void reelFish(bool fishCaught)
 {
-
+      if(fishCaught)
+      {
+            motor[motorC] = 100;
+            wait1Msec(100);
+            motor[motorC] = 0;
+      }
+      motor[motorD] = 100;
+      while(SensorValue[S4] == 0)
+      {}
+      motor[motorD] = 0;
+      motor[motorD] = -50;
+      wait1Msec(1000);
+      motor[motorD] = 0;
 }
 
 void reload()
 {
-	displayBigTextLine(9,"Reload: Down*");
-		while(true)
-	{
-		motor[motorA] = -50;
-	}
+      displayBigTextLine(9,"Reload: Down*");
+            while(true)
+      {
+            motor[motorA] = -50;
+      }
 }
 
+
+
+void manualFish()
+{
+  const int SPEED = 10;
+  //Function to clear display??
+  displayTextLine("Use direction buttons to adjust arm");
+   displayTextLine("Press centre button to confirm");
+  
+
+  while(!getButtonPress(buttonCentre))
+  {
+	  if(getButtonPress(buttonUp))
+		{
+		while(getButtonPress(buttonUp)) 
+		{
+	      motor[motorC] = SPEED;
+	    	}
+		}
+	
+			if(getButtonPress(buttonDown))
+		{
+			while(getButtonPress(buttonDown)) {
+	      motor[motorC] = -SPEED;
+	    }
+	
+		}
+	
+			if(getButtonPress(buttonLeft))
+		{
+			while(getButtonPress(buttonLeft)) {
+	      motor[motorA] = -SPEED;
+	    }
+		}
+	
+	  		if(getButtonPress(buttonRight))
+		{
+			while(getButtonPress(buttonRight)) {
+	      motor[motorA] = SPEED;
+	    }
+		}
+	}
+	
+	autoFish();
+
+
+}
 void interface()
 {
 	//displays all available options
