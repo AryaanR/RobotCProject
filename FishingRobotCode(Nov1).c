@@ -17,35 +17,48 @@ void cast()
 
 }
 
-bool waitForFish(float Time_MS)
+bool waitForFish(float timeLimit) // Liam Doyle
 {
+	// Reset Variables
+	bool fishCaught = false;
+	clearTimer(T2);
+	nMotorEncoder[motorC] = 0;
 
+	while((time1(T1)/1000) != 5){} // Buffer period to allow lure to settle on table
+
+	while(!fishCaught && (time1(T1)/1000) <= timeLimit){ // Poll for encoder movement or time limit
+		if(nMotorEncoder != 0){
+			fishCaught = true;
+		}
+	}
+
+	return fishCaught;
 }
 
 void reelFish(bool fishCaught)
 {
-      if(fishCaught)
-      {
-            motor[motorC] = 100;
-            wait1Msec(100);
-            motor[motorC] = 0;
-      }
-      motor[motorD] = 100;
-      while(SensorValue[S4] == 0)
-      {}
-      motor[motorD] = 0;
-      motor[motorD] = -50;
-      wait1Msec(1000);
-      motor[motorD] = 0;
+      if(fishCaught)
+      {
+            motor[motorC] = 100;
+            wait1Msec(100);
+            motor[motorC] = 0;
+      }
+      motor[motorD] = 100;
+      while(SensorValue[S4] == 0)
+      {}
+      motor[motorD] = 0;
+      motor[motorD] = -50;
+      wait1Msec(1000);
+      motor[motorD] = 0;
 }
 
 void reload()
 {
-      displayBigTextLine(9,"Reload: Down*");
-            while(true)
-      {
-            motor[motorA] = -50;
-      }
+      displayBigTextLine(9,"Reload: Down*");
+            while(true)
+      {
+            motor[motorA] = -50;
+      }
 }
 
 
@@ -56,33 +69,33 @@ void manualFish()
   //Function to clear display??
   displayTextLine("Use direction buttons to adjust arm");
    displayTextLine("Press centre button to confirm");
-  
+
 
   while(!getButtonPress(buttonCentre))
   {
 	  if(getButtonPress(buttonUp))
 		{
-		while(getButtonPress(buttonUp)) 
+		while(getButtonPress(buttonUp))
 		{
 	      motor[motorC] = SPEED;
 	    	}
 		}
-	
+
 			if(getButtonPress(buttonDown))
 		{
 			while(getButtonPress(buttonDown)) {
 	      motor[motorC] = -SPEED;
 	    }
-	
+
 		}
-	
+
 			if(getButtonPress(buttonLeft))
 		{
 			while(getButtonPress(buttonLeft)) {
 	      motor[motorA] = -SPEED;
 	    }
 		}
-	
+
 	  		if(getButtonPress(buttonRight))
 		{
 			while(getButtonPress(buttonRight)) {
@@ -90,7 +103,7 @@ void manualFish()
 	    }
 		}
 	}
-	
+
 	autoFish();
 
 
