@@ -1,13 +1,17 @@
-# RobotCProject
+# Automated Fishing Robot	
 
-Our robotC project code file where we each make a function and upload it to our main file
+Design documentation and implementation of an automated fishing robot as part of MTE 100: Mechatronics Engineering and MTE 121: Digital Computation
 
-## Function Task List
+## Final Product
 
+[IMAGES AND VIDEO/GIFS HERE]
 
-Startup and Shutdown -> Rahul <br>
-Reel() -> Ian <br>
-waitForFish()?, autoFish()?-> Liam <br>
-ManualFish(), cast() -> Aryaan <br>
+## Final Report
+
+[LINK HERE]
+
+## Code Implementation
+
+[Here]
 
 
