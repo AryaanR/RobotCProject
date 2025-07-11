@@ -10,7 +10,7 @@ Design documentation and implementation of an automated fishing robot as part of
 
 ## [Final Report](https://github.com/AryaanR/automated-fishing-robot/blob/fc33860fad61ac6e49080dac1a54e106c5854877/MTE%20100%20Final%20Report.pdf)
 
-## Code Implementation
+## [Code Implementation](https://github.com/AryaanR/automated-fishing-robot/blob/f4eef5f32a90e7b998ae480dce79cc0999f029b7/FishingRobot_FINAL.c)
 
 
 
